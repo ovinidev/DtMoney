@@ -16,6 +16,15 @@ export const globalStyles = globalCss({
     scrollBehavior: 'smooth',
   },
 
+  'body, input, textarea, button' : {
+    fontFamily: '$primary',
+    fontWeight: 400
+  },
+
+  'h1, h2, h3, h4, h5, h6, strong': {
+    fontWeight: 600
+  },
+
   button: {
     cursor: 'pointer',
   },
