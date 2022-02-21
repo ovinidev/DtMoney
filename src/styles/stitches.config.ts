@@ -52,26 +52,25 @@ export const {
       primary: '',
       secondary: '',
       tertiary: '',
-      quaternary: '',
-      black: '',
-      white: '',
+      shape: '',
+      title: '',
+      text: '',
+      background: '#F0F2F5',
     },
     space: {
-      1: '2rem',
-      2: '4rem',
-      3: '6rem',
-      4: '8rem',
     },
     fontSizes: {
-      1: '1.1rem',
-      2: '1.4rem',
-      3: '1.6rem',
-      4: '2.4rem',
+      12: '0.75rem',
+      14: '0.875rem',
+      16: '1rem', 
+      20: '1.25rem',
+      24: '1.5rem', 
+      30: '1.875rem',
+      36: '2.25rem'
     },
 
     fonts: {
-      default: 'Sans, apple-system, sans-serif',
-      mono: 'Söhne Mono, menlo, monospace',
+
     },
     media: {},
     fontWeights: {},
@@ -80,17 +79,14 @@ export const {
     },
     letterSpacings: {},
     sizes: {
-      1: '2rem',
-      2: '2rem',
+
     },
     borderWidths: {
-      1: '5px',
     },
     borderStyles: {
-      1: '5px',
     },
     radii: {
-      1: '6px',
+      1: '5px',
     },
     shadows: {},
     zIndices: {},

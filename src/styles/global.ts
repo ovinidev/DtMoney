@@ -5,11 +5,14 @@ export const globalStyles = globalCss({
     margin: 0,
     padding: 0,
     boxSizing: 'border-box',
-    fontFamily: 'Arial, sans-serif',
+  },
+
+  body: {
+    background: '$background',
+    webkitFontSmoothing: 'antialiased',
   },
 
   html: {
-    fontSize: '62.5%',
     scrollBehavior: 'smooth',
   },
 
@@ -17,13 +20,20 @@ export const globalStyles = globalCss({
     cursor: 'pointer',
   },
 
-  '@media(min-width: 1366px)': {
+  ['disabled']: {
+    opacity: 0.6,
+    cursor: 'not-allowed'
+  },
+
+  '@media(max-width: 1080px)': {
     html: {
+      fontSize: '93.75%', // 15px
     },
   },
 
-  '@media(min-width: 1920px)': {
+  '@media(max-width: 720px)': {
     html: {
+      fontSize: '87.5%', // 14px
     },
   },
 
