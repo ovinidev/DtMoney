@@ -47,6 +47,11 @@ export const {
       borderRadius: value,
     }),
   },
+  media: {
+    bp1: '(max-width: 1000px)',
+    bp2: '(max-width: 1000px)',
+    bp3: '(max-width: 1000px)'
+  },
   theme: {
     colors: {
       primary: '',
@@ -72,7 +77,6 @@ export const {
     fonts: {
       primary: 'Poppins, sans-serif'
     },
-    media: {},
     fontWeights: {},
     lineHeights: {
       1: '2px',
