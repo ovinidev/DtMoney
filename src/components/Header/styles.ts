@@ -3,17 +3,16 @@ import { styled } from '../../styles/stitches.config'
 export const Container = styled("header", {
   background: '$primary',
   position: 'relative',
+  height: '13.25rem',
 })
 
 export const Content = styled("div", {
   maxWidth: '70rem',
   margin: '0 auto',
-  
+  paddingTop: '2rem',
   display: 'flex',
-  alignItems: 'center',
+  alignItems: 'flex-start',
   justifyContent: 'space-between',
-
-  padding: '2rem 0 8rem',
 })
 
 export const Logo = styled("img", {
