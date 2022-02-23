@@ -2,7 +2,6 @@ import { styled } from '../../styles/stitches.config'
 
 export const Container = styled("header", {
   background: '$primary',
-  position: 'relative',
   height: '13.25rem',
 })
 

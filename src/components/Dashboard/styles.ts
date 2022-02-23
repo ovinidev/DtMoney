@@ -9,8 +9,6 @@ export const SummaryContainer = styled('div', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-
-  position: 'absolute',
-  top: '9rem'
+  marginTop: '-4.35rem'
 })
 

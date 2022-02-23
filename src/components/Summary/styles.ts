@@ -11,7 +11,7 @@ export const Container = styled("div", {
   alignItems: 'left',
   flexDirection: 'column',
 
-  padding: '1.563rem 0 0 2rem',
+  padding: '1.563rem 1.292rem 0 2rem',
   
   variants: {
     color: {
@@ -28,12 +28,22 @@ export const Container = styled("div", {
   }
 })
 
+export const Header = styled("header", {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+})
+
+export const Logo = styled("img", {
+  
+})
+
 export const Text = styled("p", {
   fontSize: '$16',
 })
 
 export const Value = styled("strong", {
-  padding: '0.875rem 0 0 0',
+  padding: '0.4rem 0 0 0',
   fontSize: '$36',
   fontWeight: 500,
 })

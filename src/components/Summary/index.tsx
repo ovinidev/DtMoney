@@ -1,16 +1,20 @@
 import { VariantProps } from "@stitches/react"
-import { Container, Text, Value } from "./styles"
+import { Container, Text, Value, Header, Logo } from "./styles"
 
-type SummaryProps = VariantProps <typeof Container> & {
+type SummaryProps = VariantProps<typeof Container> & {
   text: string,
-  value: number
+  value: number,
+  logo: string
 }
 
-export const Summary = ({text, value, ...rest} : SummaryProps) => {
+export const Summary = ({ text, value, logo, ...rest }: SummaryProps) => {
   return (
     <Container {...rest}>
-      <Text>{text}</Text>
-      <Value>R$ {value}</Value>
+      <Header>
+        <Text>{text}</Text>
+        <Logo src={logo} alt="logo" />
+      </Header>
+      <Value>R$ {value.toFixed(3)},00</Value>
     </Container>
   )
 }
