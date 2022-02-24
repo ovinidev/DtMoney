@@ -1,6 +1,21 @@
-import { Container, Td } from "./styles"
+import axios from "axios";
+import { useEffect } from "react";
+import { api } from "../../services/api";
+import { Container, Td } from "./styles";
 
 export const TransactionsTable = () => {
+
+  useEffect(() => {
+    (async function getUser() {
+      try {
+        const response = await api.get('transactions');
+        console.log(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    }())
+  }, [])
+
   return (
     <Container>
       <table>
