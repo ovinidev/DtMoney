@@ -1,11 +1,15 @@
-import { Summary } from "../Summary"
 import { Container, SummaryContainer } from "./styles"
+
 import income from '../../assets/income.svg';
 import outcome from '../../assets/outcome.svg';
 import total from '../../assets/total.svg';
+
+import { Summary } from "../Summary"
 import { TransactionsTable } from "../TransactionsTable";
+import { NewTransactionModal } from "../NewTransactionModal";
 
 export const Dashboard = () => {
+
   return (
     <Container>
       <SummaryContainer>
@@ -29,6 +33,8 @@ export const Dashboard = () => {
       </SummaryContainer>
 
       <TransactionsTable />
+
+      <NewTransactionModal />
     </Container>
   )
 }

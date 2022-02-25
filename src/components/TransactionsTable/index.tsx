@@ -1,15 +1,16 @@
 import axios from "axios";
-import { useEffect } from "react";
-import { api } from "../../services/api";
+import { useEffect, useState } from "react";
+import { axiosInstance } from "../../services/api";
 import { Container, Td } from "./styles";
 
 export const TransactionsTable = () => {
-
+  const [data, setData] = useState({})
+  
   useEffect(() => {
     (async function getUser() {
       try {
-        const response = await api.get('transactions');
-        console.log(response.data);
+        const response = await axiosInstance.get('transactions');
+        setData(response.data)
       } catch (err) {
         console.log(err);
       }

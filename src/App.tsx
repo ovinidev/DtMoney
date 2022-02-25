@@ -1,5 +1,6 @@
 import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header";
+import { TransactionsContextProvider } from "./contexts/TransactionsContext";
 import { ThemeProvider } from "./styles";
 import { globalStyles } from "./styles/global";
 
@@ -9,10 +10,12 @@ import { light } from './styles/themes/light';
 export function App() {
 
   return (
-    <ThemeProvider className={light}>
-      {globalStyles()}
-      <Header />
-      <Dashboard />
-    </ThemeProvider>
+    <TransactionsContextProvider>
+      <ThemeProvider className={light}>
+        {globalStyles()}
+        <Header />
+        <Dashboard />
+      </ThemeProvider>
+    </TransactionsContextProvider>
   )
 }

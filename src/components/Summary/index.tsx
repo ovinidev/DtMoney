@@ -1,5 +1,5 @@
-import { VariantProps } from "@stitches/react"
-import { Container, Text, Value, Header, Logo } from "./styles"
+import { VariantProps } from "@stitches/react";
+import { Container, Text, Value, Header, Logo } from "./styles";
 
 type SummaryProps = VariantProps<typeof Container> & {
   text: string,
