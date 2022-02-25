@@ -1,38 +1,14 @@
 import { styled } from '../../styles/stitches.config'
 
-export const Container = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  background: '$primary',
-
-  width: '480px',
-  margin: '0 auto',
-
+export const Container = styled('form', {
   h2: {
     width: '100%',
     fontSize: '$24',
     color: '#363F5F',
-    margin: '44px 0 32px 0',
-  }
-});
-
-export const ModalStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-
-    background: '#F0F2F5',
-    
-    height: '588px',
-    width: '576px',
+    marginBottom: '32px',
   },
-};
+
+});
 
 export const Input = styled('input', {
   height: '64px',
@@ -60,7 +36,7 @@ export const Form = styled('form', {
 });
 
 export const Button = styled('button', {
-  width: '236px',
+  width: '100%',
   height: '64px',
   border: '1.8px solid #D7D7D7',
   borderRadius: '$1',
@@ -92,7 +68,12 @@ export const Button = styled('button', {
         fontSize: '$16',
         fontWeight: 600
       }
-    }
+    },
+    margin: {
+      true: {
+        marginRight: 8,
+      }
+    },
   }
 
 });

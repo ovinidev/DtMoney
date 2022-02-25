@@ -2,11 +2,10 @@ import { TransactionsContext } from "../../contexts/TransactionsContext"
 import { useContext } from "react"
 import {
   Container,
-  ModalStyles,
   Input,
   Form,
   Button,
-  ButtonContainer
+  ButtonContainer,
 } from "./styles";
 
 import income from '../../assets/income.svg';
@@ -28,17 +27,17 @@ export const NewTransactionModal = () => {
       isOpen={modalIsOpen}
       onAfterOpen={handleAfterOpenModal}
       onRequestClose={handleCloseModal}
-      style={ModalStyles}
+      overlayClassName= "react-modal-overlay"
+      className = "react-modal-content"
       contentLabel="Example Modal"
     >
       <Container>
         <h2>Cadastrar transação</h2>
-        <Form>
           <Input placeholder="Nome" type="text"/>
           <Input placeholder="Preço" type="number"/>
 
           <ButtonContainer>
-            <Button>
+            <Button margin>
               <img src={income} alt="" />
               <h3>Entrada</h3>
             </Button>
@@ -53,7 +52,6 @@ export const NewTransactionModal = () => {
 
           <Button register>Cadastrar</Button>
 
-        </Form>
       </Container>
     </Modal>
 

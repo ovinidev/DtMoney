@@ -6,7 +6,6 @@ import total from '../../assets/total.svg';
 
 import { Summary } from "../Summary"
 import { TransactionsTable } from "../TransactionsTable";
-import { NewTransactionModal } from "../NewTransactionModal";
 
 export const Dashboard = () => {
 
@@ -34,7 +33,6 @@ export const Dashboard = () => {
 
       <TransactionsTable />
 
-      <NewTransactionModal />
     </Container>
   )
 }
