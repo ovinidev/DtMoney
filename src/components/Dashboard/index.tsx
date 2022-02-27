@@ -11,14 +11,12 @@ import { useContext } from "react";
 
 export const Dashboard = () => {
   const {
-    totalDeposit,
-    totalWithout,
-    totalTransactions
+    totalTransaction
   } = useContext(TransactionsContext);
 
-  const deposit = totalDeposit();
-  const withdraw = totalWithout();
-  const subtotal = totalTransactions();
+  const deposit = totalTransaction('deposit');
+  const withdraw = totalTransaction('withdraw');
+  const subtotal = totalTransaction('total');
 
   return (
     <Container>

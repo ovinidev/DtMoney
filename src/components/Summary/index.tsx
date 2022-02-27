@@ -14,7 +14,12 @@ export const Summary = ({ text, value, logo, ...rest }: SummaryProps) => {
         <Text>{text}</Text>
         <Logo src={logo} alt="logo" />
       </Header>
-      <Value>R$ {value},00</Value>
+      <Value>
+        {new Intl.NumberFormat('pt-BR', {
+          style: 'currency',
+          currency: 'BRL'
+        }).format(value)}
+      </Value>
     </Container>
   )
 }

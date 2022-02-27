@@ -14,7 +14,7 @@ export const TransactionsTable = () => {
     (async function getUser() {
       try {
         const response = await axiosInstance.get('transactions');
-        setData(response.data);
+        setData(response.data.transactions);
       } catch (err) {
         console.log(err);
       }
@@ -42,10 +42,17 @@ export const TransactionsTable = () => {
                   <Td>{item.title}</Td>
                   <Td
                     state={item.amount > 0 ? 'deposit' : 'withdraw'}>
-                    R$ {item.amount}
+                    {new Intl.NumberFormat('pt-BR', {
+                      style: 'currency',
+                      currency: 'BRL'
+                    }).format(item.amount)}
                   </Td>
                   <Td>{item.category}</Td>
-                  <Td>20/12/2022</Td>
+                  <Td>
+                    {new Intl.DateTimeFormat('pt-BR').format(
+                      new Date(item.createdAt)
+                    )}
+                  </Td>
                 </tr>
               );
             })

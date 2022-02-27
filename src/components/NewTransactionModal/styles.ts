@@ -1,4 +1,4 @@
-import { styled } from '../../styles/stitches.config'
+import { styled } from '../../styles/stitches.config';
 
 export const Container = styled('form', {
   h2: {
@@ -52,7 +52,7 @@ export const Button = styled('button', {
     marginLeft: '18px',
     color: '#363F5F',
     fontSize: '$16',
-    fontWeight: 'normal'
+    fontWeight: 400
   },
 
   variants: {
@@ -85,21 +85,7 @@ export const Button = styled('button', {
         },
       }
     },
-    color: {
-      green: {
-        '&:focus': {
-          background: '#12A454',
-          opacity: 0.1,
-        }
-      },
-      red: {
-        '&:focus': {
-          background: '#E62E4D',
-          opacity: 0.1,
-        }
-      },
-    }
-  }
+  },
 
 });
 

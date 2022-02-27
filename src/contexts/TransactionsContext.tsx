@@ -1,5 +1,6 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, FormEvent, ReactNode, useRef, useState } from "react";
 import { ITransactions } from "../interfaces/ITransactions";
+import { axiosInstance } from "../services/api";
 
 type TransactionsContextData = {
   modalIsOpen: boolean,
@@ -9,14 +10,21 @@ type TransactionsContextData = {
   setTypeTransaction: React.Dispatch<React.SetStateAction<string>>,
   data: ITransactions[],
   setData: React.Dispatch<React.SetStateAction<ITransactions[]>>,
-  totalDeposit: () => number,
-  totalWithout: () => number,
-  totalTransactions: () => number
+  totalTransaction: (type: string) => number,
+  handleCreateNewTransaction: (event: FormEvent) => void,
+  inputName: React.RefObject<HTMLInputElement>,
+  inputPrice: React.MutableRefObject<RefProps>,
+  inputCategory: React.RefObject<HTMLInputElement>,
 };
 
 type TransactionsProps = {
   children: ReactNode
 };
+
+type RefProps = Omit<HTMLInputElement, 'value'> & {
+  value: number;
+};
+
 
 export const TransactionsContext = createContext({} as TransactionsContextData);
 
@@ -31,38 +39,51 @@ export const TransactionsContextProvider = ({ children }: TransactionsProps) => 
     setModalIsOpen(false);
   };
 
-  const [typeTransaction, setTypeTransaction] = useState('');
+  const [typeTransaction, setTypeTransaction] = useState('deposit');
 
   const [data, setData] = useState<ITransactions[]>([]);
 
-  const totalDeposit = () => {
+  const totalTransaction = (type: string) => {
     let total = 0;
 
-    data.forEach(item => {
-      if (item.amount > 0) total += item.amount;
-    });
+    if (type === 'deposit') {
+      data.forEach(item => {
+        if (item.amount > 0) total += item.amount;
+      });
+    };
 
-    return total
+    if (type === 'withdraw') {
+      data.forEach(item => {
+        if (item.amount < 0) total += item.amount;
+      });
+    };
+
+    if (type === 'total') {
+      data.forEach(item => {
+        total += item.amount;
+      });
+    };
+
+    return total;
   };
 
-  const totalWithout = () => {
-    let total = 0;
+  const inputName = useRef<HTMLInputElement>(null);
+  const inputPrice = useRef<RefProps>({ value: 0 } as RefProps);
+  const inputCategory = useRef<HTMLInputElement>(null);
 
-    data.forEach(item => {
-      if (item.amount < 0) total += item.amount;
-    });
+  const getData = () => {
+    const name = inputName.current?.value;
+    const price = inputPrice.current?.value;
+    const category = inputCategory.current?.value;
 
-    return total
+    return { name, price, category, typeTransaction }
   };
 
-  const totalTransactions = () => {
-    let total = 0;
-
-    data.forEach(item => {
-      total += item.amount;
-    });
-
-    return total
+  const handleCreateNewTransaction = (event: FormEvent) => {
+    event.preventDefault();
+    const data = getData();
+    
+    axiosInstance.post('/transactions', data);
   };
 
   return (
@@ -74,9 +95,11 @@ export const TransactionsContextProvider = ({ children }: TransactionsProps) => 
       setTypeTransaction,
       data,
       setData,
-      totalDeposit,
-      totalWithout,
-      totalTransactions
+      totalTransaction,
+      handleCreateNewTransaction,
+      inputName,
+      inputPrice,
+      inputCategory
     }}>
       {children}
     </TransactionsContext.Provider>
