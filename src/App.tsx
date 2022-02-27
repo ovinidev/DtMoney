@@ -11,13 +11,11 @@ import { light } from './styles/themes/light';
 export function App() {
 
   return (
-    <TransactionsContextProvider>
       <ThemeProvider className={light}>
         {globalStyles()}
         <Header />
         <Dashboard />
         <NewTransactionModal />
       </ThemeProvider>
-    </TransactionsContextProvider>
   )
 }

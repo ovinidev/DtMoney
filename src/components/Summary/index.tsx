@@ -4,7 +4,7 @@ import { Container, Text, Value, Header, Logo } from "./styles";
 type SummaryProps = VariantProps<typeof Container> & {
   text: string,
   value: number,
-  logo: string
+  logo: string,
 }
 
 export const Summary = ({ text, value, logo, ...rest }: SummaryProps) => {
@@ -14,7 +14,7 @@ export const Summary = ({ text, value, logo, ...rest }: SummaryProps) => {
         <Text>{text}</Text>
         <Logo src={logo} alt="logo" />
       </Header>
-      <Value>R$ {value.toFixed(3)},00</Value>
+      <Value>R$ {value},00</Value>
     </Container>
   )
 }

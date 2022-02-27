@@ -3,11 +3,11 @@ import { useContext } from "react"
 import {
   Container,
   Input,
-  Form,
   Button,
   ButtonContainer,
 } from "./styles";
 
+import close from '../../assets/close.svg';
 import income from '../../assets/income.svg';
 import outcome from '../../assets/outcome.svg';
 
@@ -15,9 +15,9 @@ import Modal from 'react-modal';
 
 export const NewTransactionModal = () => {
   const {
-    handleAfterOpenModal,
     handleCloseModal,
-    modalIsOpen
+    modalIsOpen,
+    setTypeTransaction
   } = useContext(TransactionsContext);
 
   Modal.setAppElement('body');
@@ -25,32 +25,45 @@ export const NewTransactionModal = () => {
   return (
     <Modal
       isOpen={modalIsOpen}
-      onAfterOpen={handleAfterOpenModal}
       onRequestClose={handleCloseModal}
-      overlayClassName= "react-modal-overlay"
-      className = "react-modal-content"
+      overlayClassName="react-modal-overlay"
+      className="react-modal-content"
       contentLabel="Example Modal"
     >
+      <Button
+        type='button'
+        close
+        onClick={handleCloseModal}>
+        <img src={close} alt="fechar modal" />
+      </Button>
+
       <Container>
         <h2>Cadastrar transação</h2>
-          <Input placeholder="Nome" type="text"/>
-          <Input placeholder="Preço" type="number"/>
+        <Input placeholder="Nome" type="text" />
+        <Input placeholder="Preço" type="number" />
 
-          <ButtonContainer>
-            <Button margin>
-              <img src={income} alt="" />
-              <h3>Entrada</h3>
-            </Button>
+        <ButtonContainer>
+          <Button
+            margin
+            type='button'
+            color='green'
+            onClick={() => setTypeTransaction('deposit')}>
+            <img src={income} alt="" />
+            <span>Entrada</span>
+          </Button>
 
-            <Button>
-              <img src={outcome} alt="" />
-              <h3>Entrada</h3>
-            </Button>
-          </ButtonContainer>
+          <Button
+            type='button'
+            color='red'
+            onClick={() => setTypeTransaction('withdraw')}>
+            <img src={outcome} alt="" />
+            <span>Saída</span>
+          </Button>
+        </ButtonContainer>
 
-          <Input placeholder="Categoria" type="text"/>
+        <Input placeholder="Categoria" type="text" />
 
-          <Button register>Cadastrar</Button>
+        <Button register type='submit'>Cadastrar</Button>
 
       </Container>
     </Modal>

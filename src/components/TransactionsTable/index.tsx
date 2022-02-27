@@ -1,21 +1,25 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
+import { TransactionsContext } from "../../contexts/TransactionsContext";
 import { axiosInstance } from "../../services/api";
 import { Container, Td } from "./styles";
 
 export const TransactionsTable = () => {
-  const [data, setData] = useState({})
-  
+  const {
+    data,
+    setData,
+  } = useContext(TransactionsContext);
+
   useEffect(() => {
     (async function getUser() {
       try {
         const response = await axiosInstance.get('transactions');
-        setData(response.data)
+        setData(response.data);
       } catch (err) {
         console.log(err);
       }
     }())
-  }, [])
+  }, []);
 
   return (
     <Container>
@@ -30,30 +34,22 @@ export const TransactionsTable = () => {
         </thead>
 
         <tbody>
-          <tr>
-            <Td>Desenvolvimento no site</Td>
-            <Td state={'deposit'}>R$ 12.000</Td>
-            <Td>Desenvolvimento</Td>
-            <Td>20/12/2022</Td>
-          </tr>
-          <tr>
-            <Td>Desenvolvimento no site</Td>
-            <Td state={'withdraw'}>R$ -12.000</Td>
-            <Td>Desenvolvimento</Td>
-            <Td>20/12/2022</Td>
-          </tr>
-          <tr>
-            <Td>Desenvolvimento no site</Td>
-            <Td state={'deposit'}>R$ 12.000</Td>
-            <Td>Desenvolvimento</Td>
-            <Td>20/12/2022</Td>
-          </tr>
-          <tr>
-            <Td>Desenvolvimento no site</Td>
-            <Td state={'withdraw'}>R$ -12.000</Td>
-            <Td>Desenvolvimento</Td>
-            <Td>20/12/2022</Td>
-          </tr>
+          {
+            data &&
+            data.map((item) => {
+              return (
+                <tr key={item.id}>
+                  <Td>{item.title}</Td>
+                  <Td
+                    state={item.amount > 0 ? 'deposit' : 'withdraw'}>
+                    R$ {item.amount}
+                  </Td>
+                  <Td>{item.category}</Td>
+                  <Td>20/12/2022</Td>
+                </tr>
+              );
+            })
+          }
         </tbody>
       </table>
     </Container>

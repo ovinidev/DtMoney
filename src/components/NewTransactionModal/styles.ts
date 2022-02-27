@@ -16,9 +16,9 @@ export const Input = styled('input', {
   background: '#E7E9EE',
   border: '1px solid #D7D7D7',
   borderRadius: '$1',
-  marginBottom: '16px',
-  paddingLeft: '24px',
-  
+  marginBottom: '1rem',
+  padding: '0 1.5rem',
+
   color: '#969CB2',
 
   '&:focus': {
@@ -28,10 +28,6 @@ export const Input = styled('input', {
   '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
     '-webkit-appearance': 'none',
   }
-
-});
-
-export const Form = styled('form', {
 
 });
 
@@ -45,14 +41,14 @@ export const Button = styled('button', {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  
+
   transition: 'filter 0.3s ease-in',
 
   '&:hover': {
     filter: 'brightness(0.9)'
   },
 
-  h3: {
+  span: {
     marginLeft: '18px',
     color: '#363F5F',
     fontSize: '$16',
@@ -62,7 +58,6 @@ export const Button = styled('button', {
   variants: {
     register: {
       true: {
-        width: '100%',
         background: '#33CC95',
         color: '#FFFFFF',
         fontSize: '$16',
@@ -74,6 +69,36 @@ export const Button = styled('button', {
         marginRight: 8,
       }
     },
+    close: {
+      true: {
+        position: 'absolute',
+        top: '1.5rem',
+        right: '1.5rem',
+
+        width: '14px',
+        height: '14px',
+        background: 'none',
+        border: 'none',
+
+        '&:hover': {
+          filter: 'brightness(0.4)'
+        },
+      }
+    },
+    color: {
+      green: {
+        '&:focus': {
+          background: '#12A454',
+          opacity: 0.1,
+        }
+      },
+      red: {
+        '&:focus': {
+          background: '#E62E4D',
+          opacity: 0.1,
+        }
+      },
+    }
   }
 
 });
@@ -85,4 +110,12 @@ export const ButtonContainer = styled('div', {
 
   marginBottom: '16px',
 
+  button: {
+    '&:hover': {
+      borderColor: '#969CB3',
+      background: '#F0F2F5',
+      filter: 'none',
+      transition: '0.5s ease-in',
+    },
+  },
 });

@@ -60,13 +60,9 @@ export const globalStyles = globalCss({
   },
 
   '.react-modal-content': {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-
     background: '#F0F2F5',
-    
+    position: 'relative',
+
     height: '588px',
     width: '100%',
     maxWidth: '576px',
