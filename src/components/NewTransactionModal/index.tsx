@@ -1,5 +1,6 @@
-import { TransactionsContext } from "../../contexts/TransactionsContext"
-import { useContext } from "react"
+import { TransactionsContext } from "../../contexts/TransactionsContext";
+import { useContext } from "react";
+
 import {
   Container,
   Input,
@@ -11,7 +12,7 @@ import close from '../../assets/close.svg';
 import income from '../../assets/income.svg';
 import outcome from '../../assets/outcome.svg';
 
-import { transparentize } from 'polished'
+import { transparentize } from 'polished';
 
 import Modal from 'react-modal';
 
@@ -22,8 +23,8 @@ export const NewTransactionModal = () => {
     setTypeTransaction,
     typeTransaction,
     handleCreateNewTransaction,
-    inputName,
-    inputPrice,
+    inputTitle,
+    inputAmount,
     inputCategory
   } = useContext(TransactionsContext);
 
@@ -49,12 +50,12 @@ export const NewTransactionModal = () => {
         <Input
           placeholder="Nome"
           type="text"
-          ref={inputName}
+          ref={inputTitle}
         />
         <Input
           placeholder="Preço"
           type="number"
-          ref={inputPrice as unknown as React.RefObject<HTMLInputElement>}
+          ref={inputAmount as unknown as React.RefObject<HTMLInputElement>}
         />
 
         <ButtonContainer>

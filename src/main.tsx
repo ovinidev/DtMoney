@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { App } from './App'
 import { createServer, Model } from 'miragejs'
-import { TransactionsContextProvider } from './contexts/TransactionsContext'
+import { TransactionsProvider } from './contexts/TransactionsContext'
 
 createServer({
   models: {
@@ -18,14 +18,14 @@ createServer({
           type: 'deposit',
           category: 'Dev',
           amount: 6000,
-          createdAt: new Date('2021-02-12')
+          createdAt: new Date('2021-02-12 11:00:00'),
         }
       ]
     })
   },
 
   routes() {
-    this.namespace = 'api'
+    this.namespace = 'api';
 
     this.get('transactions', () => {
       return this.schema.all('transaction');
@@ -41,9 +41,9 @@ createServer({
 
 ReactDOM.render(
   <React.StrictMode>
-    <TransactionsContextProvider>
+    <TransactionsProvider>
       <App />
-    </TransactionsContextProvider>
+    </TransactionsProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )

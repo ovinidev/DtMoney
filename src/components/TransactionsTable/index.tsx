@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useContext, useEffect } from "react";
 import { TransactionsContext } from "../../contexts/TransactionsContext";
 import { axiosInstance } from "../../services/api";
@@ -6,15 +5,16 @@ import { Container, Td } from "./styles";
 
 export const TransactionsTable = () => {
   const {
-    data,
-    setData,
+    transactions,
+    setTransactions,
   } = useContext(TransactionsContext);
 
   useEffect(() => {
     (async function getUser() {
       try {
         const response = await axiosInstance.get('transactions');
-        setData(response.data.transactions);
+        const { transactions } = response.data;
+        setTransactions(transactions);
       } catch (err) {
         console.log(err);
       }
@@ -35,8 +35,8 @@ export const TransactionsTable = () => {
 
         <tbody>
           {
-            data &&
-            data.map((item) => {
+            transactions &&
+            transactions.map((item) => {
               return (
                 <tr key={item.id}>
                   <Td>{item.title}</Td>

@@ -8,16 +8,16 @@ type TransactionsContextData = {
   handleCloseModal: () => void,
   typeTransaction: string,
   setTypeTransaction: React.Dispatch<React.SetStateAction<string>>,
-  data: ITransactions[],
-  setData: React.Dispatch<React.SetStateAction<ITransactions[]>>,
+  transactions: ITransactions[],
+  setTransactions: React.Dispatch<React.SetStateAction<ITransactions[]>>,
   totalTransaction: (type: string) => number,
-  handleCreateNewTransaction: (event: FormEvent) => void,
-  inputName: React.RefObject<HTMLInputElement>,
-  inputPrice: React.MutableRefObject<RefProps>,
+  handleCreateNewTransaction: (event: FormEvent) => Promise<void>,
+  inputTitle: React.RefObject<HTMLInputElement>,
+  inputAmount: React.MutableRefObject<RefProps>,
   inputCategory: React.RefObject<HTMLInputElement>,
 };
 
-type TransactionsProps = {
+type TransactionsProviderProps = {
   children: ReactNode
 };
 
@@ -28,7 +28,7 @@ type RefProps = Omit<HTMLInputElement, 'value'> & {
 
 export const TransactionsContext = createContext({} as TransactionsContextData);
 
-export const TransactionsContextProvider = ({ children }: TransactionsProps) => {
+export const TransactionsProvider = ({ children }: TransactionsProviderProps) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   function handleOpenModal() {
@@ -41,25 +41,25 @@ export const TransactionsContextProvider = ({ children }: TransactionsProps) => 
 
   const [typeTransaction, setTypeTransaction] = useState('deposit');
 
-  const [data, setData] = useState<ITransactions[]>([]);
+  const [transactions, setTransactions] = useState<ITransactions[]>([]);
 
   const totalTransaction = (type: string) => {
     let total = 0;
 
     if (type === 'deposit') {
-      data.forEach(item => {
+      transactions.forEach(item => {
         if (item.amount > 0) total += item.amount;
       });
     };
 
     if (type === 'withdraw') {
-      data.forEach(item => {
+      transactions.forEach(item => {
         if (item.amount < 0) total += item.amount;
       });
     };
 
     if (type === 'total') {
-      data.forEach(item => {
+      transactions.forEach(item => {
         total += item.amount;
       });
     };
@@ -67,23 +67,42 @@ export const TransactionsContextProvider = ({ children }: TransactionsProps) => 
     return total;
   };
 
-  const inputName = useRef<HTMLInputElement>(null);
-  const inputPrice = useRef<RefProps>({ value: 0 } as RefProps);
+  const inputTitle = useRef<HTMLInputElement>(null);
+  const inputAmount = useRef<RefProps>({ value: 0 } as RefProps);
   const inputCategory = useRef<HTMLInputElement>(null);
 
-  const getData = () => {
-    const name = inputName.current?.value;
-    const price = inputPrice.current?.value;
+  const getTransactionsInput = () => {
+    const title = inputTitle.current?.value;
+    let amount = inputAmount.current?.value;
     const category = inputCategory.current?.value;
 
-    return { name, price, category, typeTransaction }
+    const createdAt = new Date();
+
+    if (typeTransaction === 'withdraw') {
+      amount = Math.abs(amount) * -1;
+    };
+
+    return {
+      title,
+      amount,
+      category,
+      type: typeTransaction,
+      createdAt
+    }
   };
 
-  const handleCreateNewTransaction = (event: FormEvent) => {
+  const handleCreateNewTransaction = async (event: FormEvent) => {
     event.preventDefault();
-    const data = getData();
     
-    axiosInstance.post('/transactions', data);
+    const data = getTransactionsInput();
+
+    const response = await axiosInstance.post('/transactions', data);
+
+    const { transaction } = response.data;
+
+    setTransactions([...transactions, transaction]);
+
+    handleCloseModal();
   };
 
   return (
@@ -93,12 +112,12 @@ export const TransactionsContextProvider = ({ children }: TransactionsProps) => 
       handleCloseModal,
       typeTransaction,
       setTypeTransaction,
-      data,
-      setData,
+      transactions,
+      setTransactions,
       totalTransaction,
       handleCreateNewTransaction,
-      inputName,
-      inputPrice,
+      inputTitle,
+      inputAmount,
       inputCategory
     }}>
       {children}

@@ -12,7 +12,12 @@ export const Header = () => {
     <Container>
       <Content>
         <Logo src={logo} alt="dt money logo" />
-        <Button type="button" onClick={handleOpenModal}>Nova transação</Button>
+        <Button
+          type="button"
+          onClick={handleOpenModal}
+        >
+          Nova transação
+        </Button>
       </Content>
     </Container>
   )
