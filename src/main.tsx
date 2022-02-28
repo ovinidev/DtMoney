@@ -19,6 +19,14 @@ createServer({
           category: 'Dev',
           amount: 6000,
           createdAt: new Date('2021-02-12 11:00:00'),
+        },
+        {
+          id: 2,
+          title: 'Freelance de website',
+          type: 'withdraw',
+          category: 'Dev',
+          amount: -2000,
+          createdAt: new Date('2021-02-12 11:00:00'),
         }
       ]
     })

@@ -35,7 +35,6 @@ export const TransactionsTable = () => {
 
         <tbody>
           {
-            transactions &&
             transactions.map((item) => {
               return (
                 <tr key={item.id}>

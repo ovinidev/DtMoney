@@ -23,7 +23,7 @@ export const Button = styled("button", {
   color: '#ffffff',
   height: '3rem',
   width: '12.188rem',
-  background: '#6933FF',
+  background: '$button',
   
   display: 'flex',
   alignItems: 'center',

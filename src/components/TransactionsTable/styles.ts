@@ -25,7 +25,7 @@ export const Td = styled("td", {
   color: '$text',
 
   '&:first-child': {
-    color: '$title'
+    color: '$titleSecondary'
   },
 
   variants: {

@@ -2,12 +2,14 @@ import { createTheme } from "../stitches.config";
 
 export const dark = createTheme({
   colors: {
-    primary: '#5429CC',
+    primary: '#0F0235',
     secondary: '#33CC95',
     tertiary: '#E62E4D',
-    shape: '#FFFFFF',
+    shape: '#17093E',
     title: '#363F5F',
-    text: '#969CB3',
-    background: '#F0F2F5',
+    text: '#ffffff',
+    background: '#0F0235',
+    button: '#301873',
+    titleSecondary: '#FFFFFF'
   },
 })

@@ -82,6 +82,10 @@ export const TransactionsProvider = ({ children }: TransactionsProviderProps) =>
       amount = Math.abs(amount) * -1;
     };
 
+    if (typeTransaction === 'deposit') {
+      amount = Math.abs(amount) * 1;
+    };
+
     return {
       title,
       amount,

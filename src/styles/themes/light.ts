@@ -9,5 +9,7 @@ export const light = createTheme({
     title: '#363F5F',
     text: '#969CB3',
     background: '#F0F2F5',
+    button: '#6933FF',
+    titleSecondary: '#969CB3'
   },
 })
