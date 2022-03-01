@@ -1,5 +1,4 @@
-import { TransactionsContext } from "../../contexts/TransactionsContext";
-import { useContext } from "react";
+import { useTransactions } from "../../hooks/useTransactions";
 
 import {
   Container,
@@ -26,7 +25,7 @@ export const NewTransactionModal = () => {
     inputTitle,
     inputAmount,
     inputCategory
-  } = useContext(TransactionsContext);
+  } = useTransactions();
 
   Modal.setAppElement('body');
 

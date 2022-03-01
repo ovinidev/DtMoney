@@ -1,4 +1,12 @@
-import { createContext, FormEvent, ReactNode, useRef, useState } from "react";
+import { 
+  createContext, 
+  FormEvent, 
+  ReactNode, 
+  useContext, 
+  useRef, 
+  useState 
+} from "react";
+
 import { ITransactions } from "../interfaces/ITransactions";
 import { axiosInstance } from "../services/api";
 
@@ -26,7 +34,7 @@ type RefProps = Omit<HTMLInputElement, 'value'> & {
 };
 
 
-export const TransactionsContext = createContext({} as TransactionsContextData);
+const TransactionsContext = createContext({} as TransactionsContextData);
 
 export const TransactionsProvider = ({ children }: TransactionsProviderProps) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -128,3 +136,9 @@ export const TransactionsProvider = ({ children }: TransactionsProviderProps) =>
     </TransactionsContext.Provider>
   )
 }
+
+export const useTransactions = () => {
+  const context = useContext(TransactionsContext);
+
+  return context;
+};

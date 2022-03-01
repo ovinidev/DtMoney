@@ -2,7 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { App } from './App'
 import { createServer, Model } from 'miragejs'
-import { TransactionsProvider } from './contexts/TransactionsContext'
+import { TransactionsProvider } from './hooks/useTransactions'
+import { ThemeProvider } from './hooks/useTheme'
 
 createServer({
   models: {
@@ -16,16 +17,32 @@ createServer({
           id: 1,
           title: 'Freelance de website',
           type: 'deposit',
-          category: 'Dev',
+          category: 'Front End',
           amount: 6000,
           createdAt: new Date('2021-02-12 11:00:00'),
         },
         {
           id: 2,
-          title: 'Freelance de website',
+          title: 'Produção de conteúdo',
           type: 'withdraw',
-          category: 'Dev',
-          amount: -2000,
+          category: 'Desenvolvimento',
+          amount: 2000,
+          createdAt: new Date('2021-02-12 11:00:00'),
+        },
+        {
+          id: 3,
+          title: 'Produção de conteúdo',
+          type: 'withdraw',
+          category: 'Desenvolvimento',
+          amount: 1500,
+          createdAt: new Date('2021-02-12 11:00:00'),
+        },
+        {
+          id: 4,
+          title: 'Produção de conteúdo',
+          type: 'withdraw',
+          category: 'Desenvolvimento',
+          amount: -500,
           createdAt: new Date('2021-02-12 11:00:00'),
         }
       ]
@@ -50,7 +67,9 @@ createServer({
 ReactDOM.render(
   <React.StrictMode>
     <TransactionsProvider>
-      <App />
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
     </TransactionsProvider>
   </React.StrictMode>,
   document.getElementById('root')

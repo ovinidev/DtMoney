@@ -12,6 +12,10 @@ export const Container = styled("div", {
   flexDirection: 'column',
 
   padding: '1.563rem 1.292rem 0 2rem',
+
+  '@bp3': {
+    width: '20rem',
+  },
   
   variants: {
     color: {
@@ -22,10 +26,14 @@ export const Container = styled("div", {
     },
     margin: {
       true: {
-        margin: '0 2rem'
+        margin: '0 2rem',
+        '@bp3': {
+          margin: '0 1rem',
+        }
       }
     }
-  }
+  },
+
 })
 
 export const Header = styled("header", {
@@ -46,5 +54,11 @@ export const Value = styled("strong", {
   padding: '0.4rem 0 0 0',
   fontSize: '$36',
   fontWeight: 500,
+
+
+  '@bp3': {
+    fontSize: '$20',
+
+  }
 })
 

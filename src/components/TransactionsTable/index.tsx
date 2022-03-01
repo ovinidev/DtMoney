@@ -1,5 +1,5 @@
-import { useContext, useEffect } from "react";
-import { TransactionsContext } from "../../contexts/TransactionsContext";
+import { useEffect } from "react";
+import { useTransactions } from "../../hooks/useTransactions";
 import { axiosInstance } from "../../services/api";
 import { Container, Td } from "./styles";
 
@@ -7,7 +7,7 @@ export const TransactionsTable = () => {
   const {
     transactions,
     setTransactions,
-  } = useContext(TransactionsContext);
+  } = useTransactions();
 
   useEffect(() => {
     (async function getUser() {

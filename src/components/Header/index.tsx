@@ -1,23 +1,26 @@
 import logo from '../../assets/logo.svg'
-import { TransactionsContext } from "../../contexts/TransactionsContext"
-import { useContext } from "react"
-import { Button, Container, Content, Logo } from "./styles"
+import { useTransactions } from "../../hooks/useTransactions"
+import { SwitchTheme } from '../Switch'
+import { Button, Container, Content, Logo, ButtonContainer } from "./styles"
 
 export const Header = () => {
   const {
     handleOpenModal,
-  } = useContext(TransactionsContext)
+  } = useTransactions()
 
   return (
     <Container>
       <Content>
         <Logo src={logo} alt="dt money logo" />
-        <Button
-          type="button"
-          onClick={handleOpenModal}
-        >
-          Nova transação
-        </Button>
+        <ButtonContainer>
+          <SwitchTheme />
+          <Button
+            type="button"
+            onClick={handleOpenModal}
+          >
+            Nova transação
+          </Button>
+        </ButtonContainer>
       </Content>
     </Container>
   )

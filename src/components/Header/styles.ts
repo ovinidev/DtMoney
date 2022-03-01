@@ -10,12 +10,18 @@ export const Content = styled("div", {
   margin: '0 auto',
   paddingTop: '2rem',
   display: 'flex',
-  alignItems: 'flex-start',
+  alignItems: 'center',
   justifyContent: 'space-between',
+
+  '@bp3': {
+    maxWidth: '24rem'
+  }
 })
 
 export const Logo = styled("img", {
-  
+  '@bp3': {
+    width: '135px'
+  },
 })
 
 export const Button = styled("button", {
@@ -36,5 +42,17 @@ export const Button = styled("button", {
 
   '&:hover': {
     filter: 'brightness(0.9)'
+  },
+
+  '@bp3': {
+    width: '130px',
+    fontSize: '$14',
+    fontWeight: 600,
   }
+})
+
+export const ButtonContainer = styled("div", {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 })

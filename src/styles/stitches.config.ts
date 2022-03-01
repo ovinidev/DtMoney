@@ -48,9 +48,9 @@ export const {
     }),
   },
   media: {
-    bp1: '(max-width: 1000px)',
-    bp2: '(max-width: 1000px)',
-    bp3: '(max-width: 1000px)'
+    bp1: '(max-width: 375px)',
+    bp2: '(max-width: 390px)',
+    bp3: '(max-width: 414px)'
   },
   theme: {
     colors: {

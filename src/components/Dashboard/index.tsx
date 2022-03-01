@@ -1,4 +1,4 @@
-import { Container, SummaryContainer } from "./styles"
+import { Container, SummaryContainer, Content } from "./styles"
 
 import income from '../../assets/income.svg';
 import outcome from '../../assets/outcome.svg';
@@ -6,13 +6,12 @@ import total from '../../assets/total.svg';
 
 import { Summary } from "../Summary"
 import { TransactionsTable } from "../TransactionsTable";
-import { TransactionsContext } from "../../contexts/TransactionsContext";
-import { useContext } from "react";
+import { useTransactions } from "../../hooks/useTransactions";
 
 export const Dashboard = () => {
   const {
     totalTransaction
-  } = useContext(TransactionsContext);
+  } = useTransactions();
 
   const deposit = totalTransaction('deposit');
   const withdraw = totalTransaction('withdraw');
@@ -20,27 +19,29 @@ export const Dashboard = () => {
 
   return (
     <Container>
-      <SummaryContainer>
-        <Summary
-          text="Entradas"
-          value={deposit}
-          logo={income}
-        />
-        <Summary
-          text="Saídas"
-          value={withdraw}
-          logo={outcome}
-          margin
-        />
-        <Summary
-          text="Total"
-          value={subtotal}
-          logo={total}
-          color='green'
-        />
-      </SummaryContainer>
+      <Content>
+        <SummaryContainer>
+          <Summary
+            text="Entradas"
+            value={deposit}
+            logo={income}
+          />
+          <Summary
+            text="Saídas"
+            value={withdraw}
+            logo={outcome}
+            margin
+          />
+          <Summary
+            text="Total"
+            value={subtotal}
+            logo={total}
+            color='green'
+          />
+        </SummaryContainer>
 
-      <TransactionsTable />
+        <TransactionsTable />
+      </Content>
     </Container>
   )
 }

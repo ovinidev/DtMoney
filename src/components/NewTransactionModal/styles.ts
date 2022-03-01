@@ -83,6 +83,13 @@ export const Button = styled('button', {
         '&:hover': {
           filter: 'brightness(0.4)'
         },
+
+        '@bp3': {
+          img: {
+            width: '20px',
+            height: '20px',
+          }
+        }
       }
     },
   },
