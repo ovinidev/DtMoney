@@ -13,6 +13,8 @@ Tecnologias utilizada no projeto:
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" width="60"> &nbsp;
 <img src="https://cdn.iconscout.com/icon/free/png-512/typescript-1174965.png" alt="imagem" width="60"> &nbsp;
 <img src="https://i.imgur.com/Y194qy5.png" alt="imagem" width="63"> &nbsp;
+<img src="https://avatars.githubusercontent.com/u/47899903?s=280&v=4" alt="imagem" width="63"> &nbsp;
+<img src="https://gw.alipayobjects.com/zos/rmsportal/rlpTLlbMzTNYuZGGCVYM.png" alt="imagem" width="63"> &nbsp;
 
 ## 💻 Projeto
 #### O projeto consiste em um Dashboard onde podemos controlar nossas transações financeiras
