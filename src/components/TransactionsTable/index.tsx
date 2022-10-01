@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useTransactions } from "../../hooks/useTransactions";
-import { axiosInstance } from "../../services/api";
+import { axiosInstance, getTransactions } from "../../services/api";
 import { Container, Td } from "./styles";
 
 export const TransactionsTable = () => {
@@ -12,8 +12,7 @@ export const TransactionsTable = () => {
   useEffect(() => {
     (async function getUser() {
       try {
-        const response = await axiosInstance.get('transactions');
-        const { transactions } = response.data;
+        const transactions = await getTransactions()
         setTransactions(transactions);
       } catch (err) {
         console.log(err);
